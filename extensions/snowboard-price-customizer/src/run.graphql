@@ -1,0 +1,30 @@
+query RunInput {
+  cart {
+    lines {
+      id
+      stiffness: attribute(key: "Stiffness") {
+        value
+      }
+      size: attribute(key: "Size") {
+        value
+      }
+      sidewallText: attribute(key: "Sidewall Text") {
+        value
+      }
+      cost {
+        amountPerQuantity {
+          amount
+        }
+      }
+      merchandise {
+        __typename
+        ... on ProductVariant {
+          product {
+            title
+            productType
+          }
+        }
+      }
+    }
+  }
+}

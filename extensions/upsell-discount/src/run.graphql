@@ -1,0 +1,26 @@
+query RunInput {
+  shop {
+    offers: metafield(namespace: "upsell-offers", key: "offers") {
+      jsonValue
+    }
+  }
+  cart {
+    cost {
+      subtotalAmount {
+        amount
+      }
+    }
+    lines {
+      id
+      isUpsell: attribute(key: "_is-upsell") {
+        value
+      }
+      merchandise {
+        __typename
+        ...on ProductVariant {
+          id
+        }
+      }
+    }
+  }
+}
